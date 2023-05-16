@@ -1,0 +1,59 @@
+<%- include('../../partials/header') %>
+    <%- include('../../partials/navbar') %>
+
+        <div class="container">
+            <hr>
+            <h2>Articles</h2>
+            <a class="btn btn-success" href="/admin/articles/new">Create article</a>
+            <hr>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Slug</th>
+                        <th>Category</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% articles.forEach(article=> { %>
+                        <tr>
+                            <td>
+                                <%= article.id %>
+                            </td>
+                            <td>
+                                <%= article.title %>
+                            </td>
+                            <td>
+                                <%= article.body %>
+                            </td>
+                            <td>
+                                <%= article.category.title %>
+                            </td>
+                            <td>
+                                <form method="POST" action="/articles/delete" style="display: inline;"
+                                    onsubmit="confirmDeletion(event, this)">
+                                    <input type="hidden" name="id" value="<%= article.id %>">
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+        <%- include('../../partials/footer') %>
+
+            <script>
+                function confirmDeletion(event, form) {
+                    event.preventDefault()
+
+                    var decision = confirm('Você deseja deletar este artigo?')
+
+                    if (decision) {
+                        form.submit()
+                    }
+                }
+            </script>
