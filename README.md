@@ -1,7 +1,5 @@
-# blog-project
+# Blog NodeJS Project
 
-
-I created a blog with an administrative panel developed with technologies such
-as nodejs, ejs, sequelize and mysql workbench for my NodeJS course.
+Blog with an administrative panel developed with nodejs, ejs, sequelize and mysql for my NodeJS course.
 
  
